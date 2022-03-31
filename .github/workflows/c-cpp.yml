@@ -10,8 +10,10 @@ jobs:
     steps:
     - name: configure
       run: |
-        sudo apt-get install -yy repo
-        echo "r
+        sudo apt-get install -yy curl 
+        sudo apt update && sudo apt install -qq -y ca-certificates curl apt-transport-https lsb-release gnupg xxd
+        sudo apt install -qq -y python-is-python3 cmake git ninja-build python-jinja2 dh-autoreconf wget curl jq zip azure-cli libcmocka-dev libcmocka-dev:i386 zlib1g-dev zlib1g-dev:i386 gcc-multilib libssl-dev
+        sudo curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo
         repo init -u git://github.com/legatoproject/manifest
         repo sync
         ls -la
