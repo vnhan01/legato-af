@@ -12,7 +12,7 @@ Mozilla Public License Version 2.0
     means the combination of the Contributions of others (if any) used
     by a Contributor and that particular Contributor's Contribution.
 
-1.3. "Contribution"
+1.3. "Contribution"   
     means Covered Software of a particular Contributor.
 
 1.4. "Covered Software"
