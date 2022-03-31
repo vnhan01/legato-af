@@ -1,5 +1,4 @@
-name: C/C++ CI
-
+name: Testing
 on:
   pull_request:
     branches:
@@ -13,7 +12,7 @@ jobs:
     steps:
     - name: configure
       run: |
-        apt-get install -y repo
+        sudo apt-get install -y repo
         repo init -u git://github.com/legatoproject/manifest
         repo sync
         ls -la
