@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
-
+ARG GITHUB_ID_RSA
+ARG GITHUB_ID_RSA_PUB
 # Add a non-root user "octave" with his home folder
 RUN useradd -ms /bin/bash octave
 
