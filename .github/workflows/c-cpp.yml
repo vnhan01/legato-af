@@ -1,19 +1,25 @@
-name: Testing
-on:
-  pull_request:
-    branches:
-    - master
+name: Build
+
+on: push
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    name: Build Container
+    runs-on: ubuntu-latest
     steps:
-    - name: configure
-      run: |
-        sudo apt-get install -yy curl 
-        sudo apt update && sudo apt install -qq -y ca-certificates curl apt-transport-https lsb-release gnupg xxd
-        sudo apt install -qq -y python-is-python3 cmake git ninja-build python-jinja2 dh-autoreconf wget curl jq zip azure-cli libcmocka-dev libcmocka-dev:i386 zlib1g-dev zlib1g-dev:i386 gcc-multilib libssl-dev
-        sudo curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo
-        repo init -u git://github.com/legatoproject/manifest
-        repo sync
-        ls -la
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Compute short commit ID
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+      - name: Login to ACR repo
+        uses: azure/docker-login@v1
+        with:
+          login-server: octavestage.azurecr.io
+          username: ${{ secrets.ACR_USER }}
+          password: ${{ secrets.ACR_PASS }}
+      - name: Build image
+        run: |
+          docker build --build-arg GITHUB_ID_RSA="${{ secrets.SSH_GITHUB_ID_RSA }}" --build-arg GITHUB_ID_RSA_PUB="${{ secrets.SSH_GITHUB_ID_RSA_PUB }}" -t octavestage.azurecr.io/legato-build:${{ steps.vars.outputs.sha_short }} . 
