@@ -28,7 +28,7 @@ a
         in Exhibit B to the Covered Software; or
 
     (b) that the Covered Software was made available under the terms of
-        version 1.1 or earlier of the License, but not also under the
+        version 1.1 or earlier of the License, but not also under the  
         terms of a Secondary License.
 
 1.6. "Executable Form"
