@@ -62,4 +62,4 @@ ENV WP77XX_SYSROOT /opt/swi/y22-ext-wp77xx/sysroots/armv7a-neon-poky-linux-gnuea
 WORKDIR $LEGATO_ROOT
 
 # Build
-RUN source bin/configlegatoenv && make wp77xx
+RUN make wp77xx
