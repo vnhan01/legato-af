@@ -20,9 +20,12 @@ jobs:
       - name: Login to ACR repo
         uses: azure/docker-login@v1
         with:
-          login-server: octavestage.azurecr.io
+          login-server: swifarm.azurecr.io
           username: ${{ secrets.ACR_USER }}
           password: ${{ secrets.ACR_PASS }}
       - name: Build image
         run: |
-          docker build --build-arg GITHUB_ID_RSA="${{ secrets.SSH_GITHUB_ID_RSA }}" --build-arg GITHUB_ID_RSA_PUB="${{ secrets.SSH_GITHUB_ID_RSA_PUB }}" -t octavestage.azurecr.io/legato-build:${{ steps.vars.outputs.sha_short }} . 
+          docker build --build-arg GITHUB_ID_RSA="${{ secrets.SSH_GITHUB_ID_RSA }}" --build-arg GITHUB_ID_RSA_PUB="${{ secrets.SSH_GITHUB_ID_RSA_PUB }}" -t swifarm.azurecr.io/legato-build:${{ steps.vars.outputs.sha_short }} . 
+      - name: Push image
+        run: |
+          docker push swifarm.azurecr.io/legato-build:${{ steps.vars.outputs.sha_short }}
