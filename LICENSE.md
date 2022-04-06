@@ -6,7 +6,7 @@ sss
 
 1.1. "Contributor"  
     means each individual or legal entity that creates, contributes to   
-    the creation of, or owns Covered Software.
+    the creation of, or owns Covered Software.  
 
 1.2. "Contributor Version"
     means the combination of the Contributions of others (if any) used
