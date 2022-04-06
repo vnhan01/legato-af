@@ -46,8 +46,8 @@ RUN mkdir .ssh
 RUN echo "$GITHUB_ID_RSA" > /home/octave/.ssh/id_rsa && chmod 600 /home/octave/.ssh/id_rsa
 RUN cat /home/octave/.ssh/id_rsa
 RUN echo "$GITHUB_ID_RSA_PUB" > /home/octave/.ssh/id_rsa.pub && chmod 600 /home/octave/.ssh/id_rsa.pub
-# RUN eval "$(ssh-agent -s)" && ssh-add /home/octave/.ssh/id_rsa
-# RUN ssh-keyscan -t rsa github.com >> /home/octave/.ssh/known_hosts
+RUN eval "$(ssh-agent -s)" && ssh-add /home/octave/.ssh/id_rsa
+RUN ssh-keyscan -t rsa github.com >> /home/octave/.ssh/known_hosts
 
 # Public Legato release
 RUN mkdir /home/octave/legato_framework
