@@ -11,7 +11,7 @@ sss
 1.2. "Contributor Version"
     means the combination of the Contributions of others (if any) used
     by a Contributor and that particular Contributor's Contribution.
-
+a
 1.3. "Contribution"   
     means Covered Software of a particular Contributor.
 
